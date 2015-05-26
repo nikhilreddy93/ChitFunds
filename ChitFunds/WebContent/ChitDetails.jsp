@@ -40,9 +40,9 @@
 	<header class = "mainHeader">
 	<nav><ul>
 		<li><a href="OrganizerHome.jsp">Home</a></li>
-		<li><a href="AboutUs.html">About Us</a></li>
-		<li><a href="ContactUs.html">Contact Us</a></li>
-		<li><a href="Home.html">Sign Out</a></li>
+		<li><a href="AboutUs.jsp">About Us</a></li>
+		<li><a href="ContactUs.jsp">Contact Us</a></li>
+		<li><a href="LogoutServlet">Sign Out</a></li>
 			</ul></nav>
 			</header>
 			

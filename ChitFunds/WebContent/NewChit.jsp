@@ -10,7 +10,7 @@
 	PrintWriter writer = response.getWriter();
 	 HttpSession session1=request.getSession(false); 
      String Name=(String)session1.getAttribute("Name");
-     System.out.println("session in register = "+session1.getId());
+     //System.out.println("session in register = "+session1.getId());
      if(Name!=null){ 
     	 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/chitfunds","root","root");
 	            Statement statement = connection.createStatement() ;
@@ -38,8 +38,8 @@
 	<header class = "mainHeader">
 	<nav><ul>
 		<li><a href="OrganizerHome.jsp">Home</a></li>
-		<li><a href="AboutUs.html">About Us</a></li>
-		<li><a href="ContactUs.html">Contact Us</a></li>
+		<li><a href="AboutUs.jsp">About Us</a></li>
+		<li><a href="ContactUs.jsp">Contact Us</a></li>
 		<li><a href="LogoutServlet">Sign Out</a></li>
 		
 			</ul></nav>
