@@ -33,7 +33,7 @@
 		<img src="image 3.jpg" height="250" width="1000">
 	<header class = "mainHeader">
 	<nav><ul>
-		<li><a href="OrganizerHome.html">Home</a></li>
+		<li><a href="OrganizerHome.jsp">Home</a></li>
 		<li><a href="AboutUs.html">About Us</a></li>
 			<li><a href="ContactUs.html">Contact Us</a></li>
 			<li><a href="LogoutServlet">Sign Out</a></li>
