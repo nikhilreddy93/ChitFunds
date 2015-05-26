@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>ChitFunds</display-name>
+  <welcome-file-list>
+    <welcome-file>Home.html</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description>To check login details</description>
+    <display-name>loginServlet</display-name>
+    <servlet-name>loginServlet</servlet-name>
+    <servlet-class>org.Nikhil.Msit.loginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loginServlet</servlet-name>
+    <url-pattern>/loginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>To Register User</description>
+    <display-name>UserRegisterServlet</display-name>
+    <servlet-name>UserRegisterServlet</servlet-name>
+    <servlet-class>org.Nikhil.Msit.UserRegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserRegisterServlet</servlet-name>
+    <url-pattern>/UserRegisterServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description>uploading image into database</description>
+    <display-name>ImageUpload</display-name>
+    <servlet-name>ImageUpload</servlet-name>
+    <servlet-class>org.Nikhil.Msit.ImageUpload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ImageUpload</servlet-name>
+    <url-pattern>/ImageUpload</url-pattern>
+  </servlet-mapping>
+</web-app>
