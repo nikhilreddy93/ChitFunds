@@ -232,6 +232,9 @@
 							
 							<p></p>
 							<p></p>
+							
+							<!-- <input type="file" name="file" size="50">
+							<br> -->
 							<label><b>Documents:</label></b><br>
 							<input type = "checkbox" id="voter" name="document" value="Voter Id">Voter Id
 							<div class="form-group" id="file-input-voter" style="display:none;">
@@ -382,7 +385,24 @@
 				</aside>
 <!-- end of chit details -->		
 				
+<!-- To create a new chit  -->	
+				<aside class="middle-sidebar">
 				
+				      <form action="Documents" method="post" enctype="multipart/form-data">
+				         Documents:
+				               <input type="file" name="file">
+				         <!-- Aadhar:
+				               <input type="file" name="file" size="50">
+				         Driving Licence:
+				               <input type="file" name="file" size="50">
+				                -->
+				         <p></p>
+				          <input type="submit" value="Submit">
+				            
+				      </form>
+	
+				</aside>
+<!-- end of chit details -->					
 <!-- selecting a user to change or updating the details -->			
 				
 				<aside class="bottom-sidebar">

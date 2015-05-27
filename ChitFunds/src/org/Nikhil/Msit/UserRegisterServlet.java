@@ -18,13 +18,15 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class UserRegisterServlet
  */
+
 public class UserRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//loginServlet login = new loginServlet();
 
@@ -55,6 +57,7 @@ public class UserRegisterServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String email= request.getParameter("email");
         String address = request.getParameter("address");
+        String fname=request.getParameter("file");
         
         password = phone;
         //System.out.println("password = "+password);
@@ -106,10 +109,10 @@ public class UserRegisterServlet extends HttpServlet {
         }
 
 	
-}
+}//dopost method
 	public String GenerateCredentials(String username) {
 		Random r = new Random( System.currentTimeMillis() );
 		username="USER_"+(1000000 + r.nextInt(7000000));
 		return username;		
-	}
+	}//generatecredentials
 }
