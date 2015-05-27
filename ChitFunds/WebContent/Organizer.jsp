@@ -163,8 +163,6 @@
 	}
         </script>	
 			
-			
-			
 			<div class = "mainContent">
 				<div class = "content">
 					<article class = "topcontent">
