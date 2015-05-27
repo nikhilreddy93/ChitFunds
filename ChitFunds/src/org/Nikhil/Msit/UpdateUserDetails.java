@@ -31,7 +31,7 @@ public class UpdateUserDetails extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 		 HttpSession session=request.getSession(false); 
 	        String Name=(String)session.getAttribute("Name");
-	        System.out.println("session in register = "+session.getId());
+	        //System.out.println("session in register = "+session.getId());
 	        if(Name!=null){
 		RequestDispatcher dispatcher = null;
 		Connection conn = null;
@@ -47,7 +47,7 @@ public class UpdateUserDetails extends HttpServlet {
         System.out.println("button1 = "+ button1);
         HttpSession session1 = request.getSession();
         session1.setAttribute("Name1", userId);
-        System.out.println("Name1 in chitassigning = "+(String)session1.getAttribute("Name1"));
+        //System.out.println("Name1 in chitassigning = "+(String)session1.getAttribute("Name1"));
         
         if(button1.equals("Update")){
         	 try {
@@ -90,17 +90,17 @@ public class UpdateUserDetails extends HttpServlet {
          			Class.forName(driver);
          			System.out.println("entered in delete");
          			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/chitfunds","root","root");
-         			System.out.println("one");
+
          			PreparedStatement statement2 =(PreparedStatement) conn.prepareStatement("delete from chitassigning where userId='"+userId+"'");
-         			System.out.println("two");
+
          			PreparedStatement statement =(PreparedStatement) conn.prepareStatement("delete from registration where userId='"+userId+"'");
          			
          			PreparedStatement statement1 =(PreparedStatement) conn.prepareStatement("delete from login where userId='"+userId+"'");
          
          			result=statement2.executeUpdate();
-         			System.out.println("three");
+
          			result=statement.executeUpdate();
-         			System.out.println("four");
+
          			result=statement1.executeUpdate();
         
          			String msg="";

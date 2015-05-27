@@ -9,7 +9,7 @@
 	PrintWriter writer = response.getWriter();
 	HttpSession session1=request.getSession(false); 
     String Name=(String)session1.getAttribute("Name");
-    System.out.println("session in register = "+session1.getId());
+    //System.out.println("session in register = "+session1.getId());
     if(Name!=null){ 
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/chitfunds","root","root");
 	            Statement statement = connection.createStatement() ;
@@ -164,6 +164,7 @@
 						<p class="post-info">Here are the users involved in this chit. Select any user to view his details</p>
 					</footer>
 			      <input type="submit" name="button" value="View" />
+			      <input type="submit" name="button" value="Remove" />
 			      </form>
 			      
 		</content>
