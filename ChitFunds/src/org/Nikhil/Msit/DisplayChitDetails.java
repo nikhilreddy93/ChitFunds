@@ -30,7 +30,7 @@ public class DisplayChitDetails extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 		HttpSession session=request.getSession(false); 
         String Name=(String)session.getAttribute("Name");
-        System.out.println("session in dispay chit details = "+session.getId());
+        //System.out.println("session in dispay chit details = "+session.getId());
         if(Name!=null){
 		Statement st = null;
 		//RequestDispatcher dispatcher = null;
@@ -41,7 +41,7 @@ public class DisplayChitDetails extends HttpServlet {
         int result1=0;
          
         String button = request.getParameter("button");
-        System.out.println("userid = "+formName);
+        //System.out.println("userid = "+formName);
         if(button.equals("View")){
         	 try {
      			Class.forName(driver);
@@ -51,7 +51,7 @@ public class DisplayChitDetails extends HttpServlet {
      			//PreparedStatement statement1 =(PreparedStatement) conn.prepareStatement("insert into login values(?,?)");
      			//statement.setString(1, "forName");
      			result = st.executeQuery("select * from newchit where chitname='"+formName+"'");
-     			System.out.println("query execured");
+     			//System.out.println("query execured");
            		
           
      			String msg="";

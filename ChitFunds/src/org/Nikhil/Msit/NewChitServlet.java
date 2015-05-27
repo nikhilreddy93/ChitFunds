@@ -30,7 +30,7 @@ public class NewChitServlet extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 		HttpSession session=request.getSession(false); 
         String Name=(String)session.getAttribute("Name");
-        System.out.println("session in register = "+session.getId());
+       // System.out.println("session in register = "+session.getId());
         if(Name!=null){
 		RequestDispatcher dispatcher = null;
 		Connection conn = null;

@@ -29,8 +29,8 @@ public class ParticularUserDetails extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 		HttpSession session=request.getSession(false); 
         String Name=(String)session.getAttribute("Name");
-        System.out.println("Name in particul user details = "+Name);
-        System.out.println("session in register = "+session.getId());
+//        System.out.println("Name in particul user details = "+Name);
+//        System.out.println("session in register = "+session.getId());
         if(Name!=null){
 		response.setContentType("text/html");
 		Statement st = null;
@@ -39,7 +39,7 @@ public class ParticularUserDetails extends HttpServlet {
         String driver="com.mysql.jdbc.Driver";
         ResultSet result = null;
         
-        System.out.println("userid in particular = "+Name);
+        //System.out.println("userid in particular = "+Name);
         
         try {
 			Class.forName(driver);
@@ -49,7 +49,7 @@ public class ParticularUserDetails extends HttpServlet {
 			//PreparedStatement statement1 =(PreparedStatement) conn.prepareStatement("insert into login values(?,?)");
 			//statement.setString(1, "forName");
 			result = st.executeQuery("select * from registration where userId='"+Name+"'");
-			System.out.println("query execured");
+			//System.out.println("query execured");
       		
 			String msg="";
 			if(result.next()){
