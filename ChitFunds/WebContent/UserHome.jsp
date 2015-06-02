@@ -54,13 +54,13 @@
 
 		</article>
 					
-				
 			</div>
 			
 				<aside class="top-sidebar">
 				<h2><b>Your Options</b></h2>
 				<form action="ParticularUserDetails" method="post">
-				<li><a href="http://localhost:8082/ChitFunds/ParticularUserDetails"><b>Your Page</b></a></li>
+				<!-- <li><a href="http://localhost:8080/ChitFunds/ParticularUserDetails.java"><b>Your Page</b></a></li> -->
+				<li><a href="http://localhost:11454/ChitFunds/ParticularUserDetails"><b>Your Page</b></a></li>
 				<li><a href="UserNonEditable.jsp"><b>View Available Chits</b></a></li>
 				</form>
 				<footer>
