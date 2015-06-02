@@ -17,7 +17,8 @@
 	            Object value=request.getAttribute("userId");
 	            ResultSet 
 	            userSet= statement.executeQuery("select chitname from chitassigning where userId='"+value+"'") ;
-	            	 ResultSet chitSet=statement1.executeQuery("select chitname from newchit");
+	            	 ResultSet chitSet=statement1.executeQuery("select chitname from newchit where chitname not in(select chitname from chitassigning where userId='"+value+"')");
+	            	 		   //chitSet=statement1.executeQuery("select chitname from newchit where chitname not in(select chitname from chitassigning where userId='"+value+"')");
 	            	 %>
     
     
@@ -84,8 +85,8 @@
 						<p class="post-info">Here are the chits in which this user is involved select one of the chit to check that chit details</p>
 					</footer>
 					
-					<form action="DisplayChitMainDetails" method="post">
-			      <select name="availablechitlist" required>
+					<form action="DisplayUserPaidDetails" method="post">
+			      <select name="userinvolved" required>
 			      <option value="" style="display:none">Please Select a chit</option>
 											<%
 						while(userSet.next()){ %>
@@ -98,23 +99,29 @@
 			      </select>
 			      <br>
 			      <p></p>
-			      <input type="submit" value="Submit">
+				<p></p>
+			      <label><b>This Month amount paid:</b></label><br>
+			 
+							<input type = "number"  id = "myText" placeholder="this month amount" name="monthamount" required />
+			    <p></p>
+			      <p></p>
+			      
 			      
 			      <br>
 			      <p></p>
 				<p></p>
 				
 					<h3>Details of the above selected chit</h3>
-			      Paid amount: <br><textarea rows="1" cols="45" name="paidamount" placeholder="Paid"></textarea><br>
-			      <p></p>
+			      <label><b>Paid Amount:</b></label><br>
+							<input type = "number" id = "myText" placeholder="amount paid" name="paidamount" readonly />
 				<p></p>
-			      Due amount:  <br><textarea rows="1" cols="45" name="dueamount" placeholder="Due"></textarea><br>
-			      <p></p>
 				<p></p>
-			      Paid months: <br><textarea rows="1" cols="45" name="paidamount" placeholder="Months"></textarea>
-			      <p></p>
+			   <label><b>Remaining Months:</b></label><br>
+							<input type = "number" id = "myText" placeholder="months remaining" name="monthsremaining" readonly />
+			    <p></p>
 				<p></p>
-
+					<input type="submit" name="button" value="Submit">
+			      <input type="submit" name="button" value="Update">
 							</form>
 	
 		</content>

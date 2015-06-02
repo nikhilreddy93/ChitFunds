@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,13 +29,15 @@ public class UpdateChitDetails extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter writer = response.getWriter();
 		 HttpSession session=request.getSession(false); 
-	        String Name=(String)session.getAttribute("Name");
+	        String Name=(String)session.getAttribute("Name"); // this name is for login id
+	        //System.out.println("name in updatechit details = "+Name);
 	        //System.out.println("session in register = "+session.getId());
 	        if(Name!=null){
 		RequestDispatcher dispatcher = null;
 		Connection conn = null;
         String driver="com.mysql.jdbc.Driver";
         int result=0;
+        ResultSet result1=null;
         String button1=request.getParameter("button");
         String chitname = request.getParameter("chitname");
   		String chitamount = request.getParameter("chitamount");
@@ -135,7 +138,11 @@ public class UpdateChitDetails extends HttpServlet {
         					Class.forName(driver);
         					conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/chitfunds","root","root");
         					PreparedStatement statement =(PreparedStatement) conn.prepareStatement("insert into chitdetails values(?,?,?,?,?,20,curdate(),?)");
-        					System.out.println("query executed");
+        					PreparedStatement statement1 =(PreparedStatement) conn.prepareStatement("select * from newchit where chitname='"+chitname+"'");
+        					//result1 = statement.executeQuery("select * from registration where userId='"+chitname+"'");
+        				System.out.println("chit name in update chit submit = "+chitname);
+        					//System.out.println("query executed");
+        			           	      		
         					statement.setString(1, chitname);
         					statement.setString(2, monthamount);
         					statement.setString(3, commission);
@@ -143,17 +150,48 @@ public class UpdateChitDetails extends HttpServlet {
         					statement.setString(5, monthsleft);
         					statement.setDouble(6, UserToPay);
         					result=statement.executeUpdate();
+        					result1 = statement1.executeQuery();
         		      		
         					
-        					if(result!=0){
-        						request.setAttribute("monthamount", monthamount);
-        						request.setAttribute("usertopay", UserToPay1);
-        						request.setAttribute("commissionamount", OrganizerCommission);
+        					if(result!=0&&result1.next()){
+        						
+        						chitname = result1.getString("chitname");
+                 	      		chitamount = result1.getString("chitamount");
+                 	      		minimumamount = result1.getString("mindraw");
+                 	      		customerlimit = result1.getString("noofusers");
+                 	      		chitspan = result1.getString("noofmonths");
+                 	      		
+//                 	      		System.out.println(chitname);
+//                 	      		System.out.println(chitamount);
+//                 	      		System.out.println(minimumamount);
+//                 	      		System.out.println(customerlimit);
+//                 	      		System.out.println(chitspan);
+//                 	      		
+                 	      		
+                 	      		System.out.println("user to pay = "+UserToPay1);
+                 	      		System.out.println("commission amount = "+OrganizerCommission);
+                 	      		System.out.println("months left = "+monthsleft);
+                 	      		request.setAttribute("chitname", chitname);
+                 	      		request.setAttribute("chitamount", chitamount);
+                 	      		request.setAttribute("minimumamount", minimumamount);
+                 	      		request.setAttribute("customerlimit", customerlimit);
+                 	      		request.setAttribute("chitspan", chitspan);
+
+        	    	   
+        						//request.setAttribute("monthamount", monthamount);
+        						request.setAttribute("usertopay", UserToPay);
+        						request.setAttribute("commissionAmount", OrganizerCommission);
         						request.setAttribute("monthsleft", monthsleft);
+        						
         						writer.println("<font size='6' color=blue></font>");
         		                dispatcher=request.getRequestDispatcher("ChitDetails.jsp");
         		                dispatcher.forward(request,response);
-        		}	
+        		}
+        					else{
+        						System.out.println("else in updatechit details");
+        						dispatcher=request.getRequestDispatcher("ChitDetails.jsp");
+        		                dispatcher.forward(request,response);
+        					}
         			                         
         			          statement.close();
         			                      }  

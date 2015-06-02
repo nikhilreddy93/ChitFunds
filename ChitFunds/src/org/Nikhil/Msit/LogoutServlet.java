@@ -28,13 +28,15 @@ public class LogoutServlet extends HttpServlet {
           
 //        request.getSession().invalidate();
 //        response.sendRedirect(request.getContextPath() + "/Home.html");
-        request.getRequestDispatcher("Home.html").include(request, response);  
-          
         HttpSession session=request.getSession();  
         session.invalidate();
+        //System.out.println("session in signout:"+session.getId());
         HttpSession session1 = request.getSession();
         session1.invalidate();
-       // System.out.println("session in signout:"+session.getId());
+        request.getRequestDispatcher("Home.html").include(request, response);  
+          
+        
+        //System.out.println("session in signout:"+session.getId());
           String msg = "You have Successfully logged out";
         out.print("<font size='6' color=blue>" + msg + "</font>");
 	}

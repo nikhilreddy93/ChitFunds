@@ -9,6 +9,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="D:/Java/cos-multipart.jar"/>
+	<classpathentry kind="lib" path="G:/java jar files/file upload jar file/cos-multipart.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

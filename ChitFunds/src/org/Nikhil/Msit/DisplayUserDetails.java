@@ -51,24 +51,21 @@ public class DisplayUserDetails extends HttpServlet {
         ResultSet result = null;
         int result1=0;
         String button1=request.getParameter("button");
-        //System.out.println("userid = "+formName);
+       
         HttpSession session1 = request.getSession();
         session1.setAttribute("Name1", formName);
-//        HttpSession session2=request.getSession(false);
-//        System.out.println("Name2 in displayUserDetails = "+(String)session2.getAttribute("Name2"));
+
         if(button1.equals("View")){
         	try {
     			Class.forName(driver);
     			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/chitfunds","root","root");
-    			//PreparedStatement statement =(PreparedStatement) conn.prepareStatement("select * from registration where userId='"+formName+"'");
+    			
     			st = conn.createStatement();
-    			//PreparedStatement statement1 =(PreparedStatement) conn.prepareStatement("insert into login values(?,?)");
-    			//statement.setString(1, "forName");
     			result = st.executeQuery("select * from registration where userId='"+formName+"'");
-    			//System.out.println("query execured");
+    			
           		String msg="";
     			if(result.next()){
-    	      		//RequestDispatcher dispatcher1=request.getRequestDispatcher("Organizer.html");
+    	      		
     				String userId = result.getString("userId");
     	      		String fullname = result.getString("fullname");
     	      		String dob = result.getString("dob");

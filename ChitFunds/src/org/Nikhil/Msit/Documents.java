@@ -22,7 +22,7 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
 	
 	response.setContentType("text/html");  
 	PrintWriter out = response.getWriter();
-	MultipartRequest m=new MultipartRequest(request,"d:/new");  
+	MultipartRequest m=new MultipartRequest(request,"LENOVO(D:)/new");  
 	out.print("successfully uploaded");  
 	RequestDispatcher dispatcher=request.getRequestDispatcher("Organizer.jsp");
                   dispatcher.forward(request,response);

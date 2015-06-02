@@ -52,10 +52,14 @@ public class ChitAssigning extends HttpServlet {
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/chitfunds","root","root");
 			PreparedStatement statement =(PreparedStatement) conn.prepareStatement("insert into chitassigning values(?,?)");
 			PreparedStatement statement1 =(PreparedStatement) conn.prepareStatement("select * from registration where userId='"+userId+"'");
+			PreparedStatement statement2 =(PreparedStatement) conn.prepareStatement("insert into userpaydetails values(?,?,curdate(),0,0)");
 			statement.setString(1, userId);
 			statement.setString(2, formname);
+			statement2.setString(1, userId);
+			statement2.setString(2, formname);
 			result = statement1.executeQuery();
 			result1=statement.executeUpdate();
+			result1=statement2.executeUpdate();
 			String msg="";
 			if(result1!=0 && result.next()){
 	      		//RequestDispatcher dispatcher1=request.getRequestDispatcher("Organizer.html");

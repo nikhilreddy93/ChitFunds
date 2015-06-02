@@ -37,7 +37,7 @@ public class loginServlet extends HttpServlet {
         ResultSet result = null;     
         		userId = request.getParameter("Username");
         String password = request.getParameter("Password");
-        //System.out.println("userid in login = "+userId);
+        System.out.println("userid in login = "+userId);
         
         try {
 			Class.forName(driver);
@@ -49,7 +49,7 @@ public class loginServlet extends HttpServlet {
 	          String msg="";
 	          if(userId.charAt(0)=='U'){
 	        	  if(result.next()){
-	        		  System.out.println("if part");
+	        		  //System.out.println("if part");
 	        		  HttpSession session = request.getSession();
 	                  session.setAttribute("Name", userId);
 	                 // String id=session.getId();

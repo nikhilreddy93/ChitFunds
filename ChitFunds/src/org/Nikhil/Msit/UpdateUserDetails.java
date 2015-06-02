@@ -46,7 +46,7 @@ public class UpdateUserDetails extends HttpServlet {
         String address = request.getParameter("address");
         System.out.println("button1 = "+ button1);
         HttpSession session1 = request.getSession();
-        session1.setAttribute("Name1", userId);
+        session1.setAttribute("Name1", userId);  
         //System.out.println("Name1 in chitassigning = "+(String)session1.getAttribute("Name1"));
         
         if(button1.equals("Update")){

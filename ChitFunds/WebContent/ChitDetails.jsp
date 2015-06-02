@@ -120,24 +120,24 @@
 			    <p></p>
 				<p></p>
 				<label><b>Your Commission</b></label><br>
-							<input type = "number" id = "commission" placeholder="commission in percentage" name="commission" required />
+							<input type = "number" id = "commission" placeholder="give in percentage" name="commission" required />
 				<p></p>
 				<p></p>
 					<input type="submit" name="button" value="Submit" />
 			    <p></p>
 				<p></p>
 				<label><b>User to pay</b></label><br>
-							<input type = "number" id = "userpay" placeholder="chitspan" name="usertopay" readonly="readonly" />
+							<input type = "text"  placeholder="User to pay" name="usertopay" readonly="readonly" />
 	
 			    <p></p>
 				<p></p>
 				<label><b>Commission Amount</b></label><br>
-							<input type = "number" id = "commissionAmount" placeholder="amount you get" name="commissionAmount" readonly="readonly"/>
+							<input type = "text"  placeholder="amount you get" name="commissionAmount" readonly="readonly"/>
 	
 				<p></p>
 				<p></p>
 				<label><b>No of Months left</b></label><br>
-							<input type = "number" id = "monthsleft" placeholder="chitspan" name="monthsleft" readonly="readonly"/>
+							<input type = "text"  placeholder="chitspan" name="monthsleft" readonly="readonly"/>
 	
 			    <p></p>
 				<p></p>

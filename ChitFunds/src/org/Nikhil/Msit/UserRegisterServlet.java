@@ -57,12 +57,12 @@ public class UserRegisterServlet extends HttpServlet {
         String phone = request.getParameter("phone");
         String email= request.getParameter("email");
         String address = request.getParameter("address");
-        String fname=request.getParameter("file");
+       // String fname=request.getParameter("file");
         
         password = phone;
-        //System.out.println("password = "+password);
+        System.out.println("password = "+password);
         userId = user.GenerateCredentials(userId);
-        //System.out.println("username = " + userId);
+        System.out.println("username = " + userId);
         try {
 			Class.forName(driver);
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/chitfunds","root","root");
