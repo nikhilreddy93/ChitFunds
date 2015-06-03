@@ -1,6 +1,7 @@
 package org.Nikhil.Msit;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,56 +10,64 @@ import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-//import javax.servlet.http.Cookie;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+import com.oreilly.servlet.MultipartRequest; 
 
 /**
  * Servlet implementation class UserRegisterServlet
+ * 
  */
-
+//@WebServlet("/UserRegisterServlet") 
+@MultipartConfig(maxFileSize = 16177215) // upload file up to 16MB 
 public class UserRegisterServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; 
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//loginServlet login = new loginServlet();
-
-		PrintWriter writer = response.getWriter();
-		HttpSession session=request.getSession(false); 
-        String Name=(String)session.getAttribute("Name");
-        //System.out.println("session in register = "+session.getId());
-        if(Name!=null){ 
 		UserRegisterServlet user = new UserRegisterServlet();
-		//String userId1=login.userId;
 		String userId = "";
 		String password = "";
 		response.setContentType("text/html");
-		
+		PrintWriter writer = response.getWriter();
 		RequestDispatcher dispatcher = null;
 		Connection conn = null;
         String driver="com.mysql.jdbc.Driver";
         int result = 0;
         @SuppressWarnings("unused")
 		int result1=0;
-         
-        //	System.out.println("if in session");
-       // System.out.println("name in register = "+Name);
         
-        //System.out.println("userID 1 = "+ userId1);
         String fullname=request.getParameter("fullname");
         String dob=request.getParameter("dob");
         String phone = request.getParameter("phone");
         String email= request.getParameter("email");
         String address = request.getParameter("address");
-       // String fname=request.getParameter("file");
+        String filename =request.getParameter("photos");
         
+       /* /////////////////////////////////////////////////////
+        //my code for file uploading
+        InputStream inputStream = null; // input stream of the upload file
+        
+        // obtains the upload file part in this multipart request
+        Part filePart = request.getPart("photos");
+      //  if (filePart != null) {
+            // prints out some information for debugging
+            System.out.println(filePart.getName());
+            System.out.println(filePart.getSize());
+            System.out.println(filePart.getContentType());
+             
+            // obtains input stream of the upload file
+            inputStream = filePart.getInputStream();
+        //}
+        ////////////////////////////////////////////////////////
+*/        
         password = phone;
         System.out.println("password = "+password);
         userId = user.GenerateCredentials(userId);
@@ -66,7 +75,7 @@ public class UserRegisterServlet extends HttpServlet {
         try {
 			Class.forName(driver);
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/chitfunds","root","root");
-			PreparedStatement statement =(PreparedStatement) conn.prepareStatement("insert into registration values(?,?,?,?,?,?,curdate())");
+			PreparedStatement statement =(PreparedStatement) conn.prepareStatement("insert into registration values(?,?,?,?,?,?)");
 			PreparedStatement statement1 =(PreparedStatement) conn.prepareStatement("insert into login values(?,?)");
 			
 			statement.setString(1, userId);
@@ -75,7 +84,21 @@ public class UserRegisterServlet extends HttpServlet {
 			statement.setString(4, phone);
 			statement.setString(5, email);
 			statement.setString(6, address);
-			result=statement.executeUpdate();
+			
+			MultipartRequest m=new MultipartRequest(request,"d:/new");  
+			/*/////////////////////////////////////////////////////////
+			if (inputStream != null) {
+                // fetches input stream of the upload file for the blob column
+                //statement.setBlob(7, inputStream);
+				statement.setBinaryStream(7, inputStream, (int)filePart.getSize());
+				//statement.setBinaryStream(7, inputStream);
+            }
+			/////////////////////////////////////////////////////////
+			 * 
+*/			result=statement.executeUpdate();
+		/*	if (result>0){
+				System.out.println("file uploaded succesfully");
+			}*/
 			
 			statement1.setString(1, userId);
 			statement1.setString(2, password);
@@ -101,18 +124,11 @@ public class UserRegisterServlet extends HttpServlet {
 	                    	  writer.close();  
 	                      }  
 	}
-        else{
-        	System.out.println("else in session");
-        	String msg="Sorry please login first";
-            	writer.print("<font size='6' color=red>" + msg + "</font>");
-        	 request.getRequestDispatcher("Home.html").include(request, response);
-        }
-
 	
-}//dopost method
-	public String GenerateCredentials(String username) {
+	private String GenerateCredentials(String username) {
 		Random r = new Random( System.currentTimeMillis() );
 		username="USER_"+(1000000 + r.nextInt(7000000));
 		return username;		
-	}//generatecredentials
+	}
+
 }
