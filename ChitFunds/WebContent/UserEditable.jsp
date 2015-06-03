@@ -105,24 +105,24 @@
 							<input type = "number"  id = "myText" placeholder="this month amount" name="monthamount" required />
 			    <p></p>
 			      <p></p>
-			      
+			      <input type="submit" name="button" value="Submit">
+			      <input type="submit" name="button" value="Update">
 			      
 			      <br>
 			      <p></p>
 				<p></p>
-				
-					<h3>Details of the above selected chit</h3>
+					
+							
+							<h3>Details of the above selected chit</h3>
 			      <label><b>Paid Amount:</b></label><br>
-							<input type = "number" id = "myText" placeholder="amount paid" name="paidamount" readonly />
+							<input type = "number" value ="<%=request.getAttribute("paidamount")%>"  id = "myText" placeholder="amount paid" name="paidamount" readonly />
 				<p></p>
 				<p></p>
 			   <label><b>Remaining Months:</b></label><br>
-							<input type = "number" id = "myText" placeholder="months remaining" name="monthsremaining" readonly />
+							<input type = "number" value ="<%=request.getAttribute("monthsleft")%>" id = "myText" placeholder="months remaining" name="monthsleft" readonly />
 			    <p></p>
 				<p></p>
-					<input type="submit" name="button" value="Submit">
-			      <input type="submit" name="button" value="Update">
-							</form>
+				</form>
 	
 		</content>
 		</article>

@@ -8,7 +8,7 @@
 	PrintWriter writer = response.getWriter();
 	HttpSession session1=request.getSession(false); 
     String Name=(String)session1.getAttribute("Name");
-   // System.out.println("session in register = "+session1.getId());
+    System.out.println("session in usernon editable = "+session1.getId());
     if(Name!=null){ 
 	
 	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/chitfunds","root","root");
@@ -83,7 +83,7 @@
 						<p class="post-info">Here are the chits in which this user is involved select one of the chit to check that chit details</p>
 					</footer>
 					
-					<form action="DisplayChitMainDetails" method="post">
+					<form action="DisplayUserPaidDetails" method="post">
 			      <select name="availablechitlist" required>
 			      <option value="" style="display:none">Please Select a chit</option>
 											<%
@@ -97,20 +97,22 @@
 			      </select>
 			      <br>
 		
+			<p></p>
+			      <p></p>
+			      <input type="submit" name="button" value="View">
 			      
 			      <br>
 			      <p></p>
 				<p></p>
 				
-					<h3>Details of the above selected chit</h3>
-			      Paid amount: <br><textarea rows="1" cols="45" name="paidamount" placeholder="Paid"></textarea><br>
-			      <p></p>
+							<h3>Details of the above selected chit</h3>
+			      <label><b>Paid Amount:</b></label><br>
+							<input type = "number" value ="<%=request.getAttribute("paidamount")%>"  id = "myText" placeholder="amount paid" name="paidamount" readonly />
 				<p></p>
-			      Due amount:  <br><textarea rows="1" cols="45" name="dueamount" placeholder="Due"></textarea><br>
-			      <p></p>
 				<p></p>
-			      Paid months: <br><textarea rows="1" cols="45" name="paidamount" placeholder="Months"></textarea>
-			      <p></p>
+			   <label><b>Remaining Months:</b></label><br>
+							<input type = "number" value ="<%=request.getAttribute("monthsleft")%>" id = "myText" placeholder="months remaining" name="monthsleft" readonly />
+			    <p></p>
 				<p></p>
 
 							</form>

@@ -146,18 +146,8 @@ public class DisplayUserDetails extends HttpServlet {
         			try {
             			Class.forName(driver);
             			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/chitfunds","root","root");
-            			//PreparedStatement statement =(PreparedStatement) conn.prepareStatement("select * from registration where userId='"+formName+"'");
-//            			st = conn.createStatement();
-//            			st1 = conn.createStatement();
             			st2 = conn.createStatement();
-            			//PreparedStatement statement1 =(PreparedStatement) conn.prepareStatement("insert into login values(?,?)");
-            			//statement.setString(1, "forName");
             			result1 = st2.executeUpdate("delete from chitassigning where userId='"+formName+"'");
-//            			result1 = st.executeUpdate("delete from registration where userId='"+formName+"'");
-//            			result1 = st1.executeUpdate("delete from login where userId='"+formName+"'");
-            	
-            			System.out.println("query executed");
-                      			
             			String msg="";
             			if(result1==0){
 

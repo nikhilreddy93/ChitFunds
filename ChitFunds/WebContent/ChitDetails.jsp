@@ -112,7 +112,7 @@
 				<input type="submit" name="button" value="Update" />
 				<input type="submit" name="button" value="Delete" />
 			      <br>
-			      
+			      <br>
 			      <h2>Money Details</h2>
 			      <label><b>This Month Chit Amount</b></label><br>
 							<input type = "number" onchange="amountCheck(this.value)" id = "monthamount"  placeholder="monthamount" name="monthamount" required />
@@ -127,17 +127,17 @@
 			    <p></p>
 				<p></p>
 				<label><b>User to pay</b></label><br>
-							<input type = "text"  placeholder="User to pay" name="usertopay" readonly="readonly" />
+							<input type = "text" value="<%=request.getAttribute("usertopay")%>"  placeholder="User to pay" name="usertopay" readonly="readonly" />
 	
 			    <p></p>
 				<p></p>
 				<label><b>Commission Amount</b></label><br>
-							<input type = "text"  placeholder="amount you get" name="commissionAmount" readonly="readonly"/>
+							<input type = "text" value="<%=request.getAttribute("commissionAmount")%>"  placeholder="amount you get" name="commissionAmount" readonly="readonly"/>
 	
 				<p></p>
 				<p></p>
 				<label><b>No of Months left</b></label><br>
-							<input type = "text"  placeholder="chitspan" name="monthsleft" readonly="readonly"/>
+							<input type = "text" value="<%=request.getAttribute("monthsleft")%>"  placeholder="chitspan" name="monthsleft" readonly="readonly"/>
 	
 			    <p></p>
 				<p></p>

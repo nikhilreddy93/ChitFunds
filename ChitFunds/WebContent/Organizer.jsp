@@ -233,6 +233,8 @@
 							
 							<!-- <input type="file" name="file" size="50">
 							<br> -->
+							
+							<!-- 
 							<label><b>Documents:</label></b><br>
 							<input type = "checkbox" id="voter" name="document" value="Voter Id">Voter Id
 							<div class="form-group" id="file-input-voter" style="display:none;">
@@ -327,7 +329,7 @@
 							}
 							
 							</script>
-							
+							 -->
 							<p></p>
 							<p></p>							
 							<input type="submit" value="Create User"/>

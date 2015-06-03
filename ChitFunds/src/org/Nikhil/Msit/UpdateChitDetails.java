@@ -178,7 +178,7 @@ public class UpdateChitDetails extends HttpServlet {
                  	      		request.setAttribute("chitspan", chitspan);
 
         	    	   
-        						//request.setAttribute("monthamount", monthamount);
+        						
         						request.setAttribute("usertopay", UserToPay);
         						request.setAttribute("commissionAmount", OrganizerCommission);
         						request.setAttribute("monthsleft", monthsleft);
